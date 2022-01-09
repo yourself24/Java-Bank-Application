@@ -1,0 +1,20 @@
+CREATE DATABASE BancaT;
+Create table users(
+    id int primary key auto_increment unique,
+    FirstName varchar(50) not null ,
+    LastName varchar(50) not null,
+    CNP varchar (13) not null unique
+
+)ENGINE =InnoDB;
+Create table Accounts(
+    id int primary key auto_increment,
+    Type varchar(50),
+    Balance double
+)engine=InnoDb;
+create table Mapping(
+    id int primary key  auto_increment,
+    UserId int,
+    AccountId int,
+    foreign key (UserId) references users(id) on delete cascade,
+    foreign key (AccountId) references Accounts(id) on delete cascade
+)engine=InnoDb;
